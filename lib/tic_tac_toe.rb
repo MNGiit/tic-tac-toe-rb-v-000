@@ -154,7 +154,10 @@ def play(board)
   while !over?(board)
     turn(board)
   end
-
+  
+  if won?(board)
+    puts "Congratulations!"
+  end
 end
 
 
