@@ -143,5 +143,9 @@ end
 
 def winner(board)
   winner_return = won?(board)
-  return board[winner_return.first]
+  if winner_return == nil
+    return nil
+  else
+    return board[winner_return.first]
+  end
 end
