@@ -150,3 +150,4 @@ def winner(board)
   end
 end
 
+def play
