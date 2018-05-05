@@ -69,3 +69,75 @@ def current_player (board)
     return "O"
   end
 end
+
+def won?(board)
+  empty = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  winning_numbers = [] #store and return this
+
+  WIN_COMBINATIONS.each do |array|
+    if empty == board
+      return false
+    elsif array.all? { |value| board[value] =="X" } || array.all? { |value| board[value] =="O" }
+      winning_numbers = array
+      break
+    else
+      winning_numbers = nil
+    end # end for If statements
+  end # end for enumerations
+  return winning_numbers #return this value
+end #end for function won?
+
+def full?(board)
+ !board.detect { |x| x == " " }
+end
+
+
+=begin
+def draw?(board)
+  if won?(board) #if won, return false
+    return false
+  elsif !won?(board) && !full?(board) #not won AND not full, return false
+    return false
+  elsif !won?(board) && full?(board) #not won AND full, return true
+    return true
+  end
+end
+=end
+
+def draw?(board)
+  if won?(board)
+    return false
+  else
+    if !full?(board)
+      return false
+    else
+      return true
+    end
+  end
+end
+
+
+def over?(board)
+  if draw?(board) || won?(board)
+    return true
+  elsif !won?(board) && !full?(board)
+    return false
+  elsif board.any? { |x| x == " " } && !won?(board)
+    return false
+  end
+end
+
+=begin
+def winner(board)
+  if won?(board)
+    the_winning_letter = won?(board)
+    if the_winning_letter.detect { |value| board[value] == "X" }
+      return "X"
+      elsif the_winning_letter.detect { |value| board[value] =="O" }
+      return "O"
+    end
+  else
+    nil
+end
+=end
+
