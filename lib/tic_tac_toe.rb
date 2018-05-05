@@ -154,9 +154,5 @@ def play(board)
   while !over?(board)
     turn(board)
   end
-  if winner?(board)
-    puts "Congratulations!"
-  else
-    puts "DRAW!"
-  end
+
 end
